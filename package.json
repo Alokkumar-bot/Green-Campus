@@ -1,0 +1,23 @@
+{
+  "name": "green-campus",
+  "version": "1.0.0",
+  "description": "Green Campus — Sustainability Reporting & Management System",
+  "private": true,
+  "scripts": {
+    "server": "node server/server.js",
+    "client": "cd client && vite",
+    "seed": "node server/database/seed.js",
+    "init-db": "node server/database/init.js",
+    "build:client": "cd client && vite build",
+    "test:system": "node verify-system.cjs"
+  },
+  "keywords": [
+    "sustainability",
+    "green-campus",
+    "reporting",
+    "environmental-management",
+    "college-project"
+  ],
+  "author": "Green Campus Student Development Team",
+  "license": "MIT"
+}
