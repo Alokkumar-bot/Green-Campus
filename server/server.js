@@ -25,6 +25,9 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
+// Path to React production build
+const clientDistPath = path.join(__dirname, '../client/dist');
+
 // Middleware
 app.use(cors({
   origin: true,
@@ -35,6 +38,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static uploaded files
 app.use('/uploads', express.static(uploadsDir));
+
+// Serve React production build static files
+app.use(express.static(clientDistPath));
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -54,6 +60,15 @@ app.get('/api/health', (req, res) => {
 // 404 handler for unknown API routes
 app.use('/api/*', (req, res) => {
   res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found.` });
+});
+
+// Serve React production frontend for all non-API GET requests (SPA routing)
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API route not found' });
+  }
+
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 // Global error handler
