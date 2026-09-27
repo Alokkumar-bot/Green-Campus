@@ -1,4 +1,8 @@
 # 🌿 Green Campus — Reporting & Sustainability Management System
+# 🌱 Green Campus
+
+### 🚀 Live Website
+[Visit Green Campus](https://green-campus-1-xs9k.onrender.com)
 
 > **“Report. Resolve. Sustain.”**  
 > A full-stack university environmental issue reporting and facilities remediation platform built as an academic Continuous Assessment / Capstone project.
